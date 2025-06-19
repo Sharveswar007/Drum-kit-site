@@ -1,6 +1,7 @@
 for(var i =0; i <=document.querySelectorAll('.drum').length; i++) {
     document.querySelectorAll('.drum')[i].addEventListener('click', function() {
         var buttonInnerHTML = this.innerHTML;
+        buttonAnimation(buttonInnerHTML);
         if (buttonInnerHTML === 'w') {
             var audio = new Audio('sounds/tom-1.mp3');
             audio.play();
@@ -33,7 +34,9 @@ for(var i =0; i <=document.querySelectorAll('.drum').length; i++) {
     });
     document.addEventListener('keypress',function(a)
     {
+
         var key=a.key;
+        buttonAnimation(key);
         if (key === 'w') {
             var audio = new Audio('sounds/tom-1.mp3');
             audio.play();
@@ -64,3 +67,13 @@ for(var i =0; i <=document.querySelectorAll('.drum').length; i++) {
         }
     });
 } 
+
+function buttonAnimation(currentKey) {
+    var button1=document.querySelector('.'+currentKey);
+    button1.classList.add('pressed');
+    setTimeout(function() {
+        button1.classList.remove('pressed');
+    }, 100);
+
+    }
+
